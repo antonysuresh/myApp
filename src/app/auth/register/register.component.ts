@@ -1,3 +1,4 @@
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { RegisterFrom } from 'src/app/types/auth';
 
@@ -8,18 +9,21 @@ import { RegisterFrom } from 'src/app/types/auth';
 })
 export class RegisterComponent implements OnInit {
 
-  rform: RegisterFrom = {
+  constructor(private authService: AuthService) { }
+
+  ngOnInit(): void { }
+
+  form: RegisterFrom = {
     email: '',
     password: '',
     confirm_password: ''
   }
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   submit() {
-    console.log(this.rform);
+   this.authService.register(this.form);
+  }
+  isLoading() {
+    return this.authService.isLoading;
   }
 
 }
