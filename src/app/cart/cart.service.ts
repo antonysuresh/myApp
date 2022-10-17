@@ -20,7 +20,7 @@ export class CartService {
     return this.cart;
   }
   remove(book: Book){
-    this.cart = this.cart.filter((b) => b != book);
+    this.cart = this.cart.filter((b) => b !== book);
   }
 
 }
